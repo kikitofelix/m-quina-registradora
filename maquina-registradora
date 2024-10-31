@@ -1,0 +1,43 @@
+# Variáveis
+produto = 1
+preco = 0
+total = 0
+dinheiro = 0
+troco = 0
+
+# Looping infinito para manter o programa em execução constante
+while True:
+    print("Lojas Tabajara")
+
+    # Inserção dos preços e armazenamento do total
+    while True:
+        preco = float(input(f"Produto {produto}: R$ "))
+        if preco == 0:
+            break
+        total += preco
+        produto += 1
+
+    # Exibição do total e solicitação do valor pago
+    print(f"Total: R$ {total:.2f}")
+    dinheiro = float(input("Dinheiro: R$ "))
+    troco = dinheiro - total
+
+    # Condicional para verificar se o valor pago é suficiente
+    if dinheiro < total:
+        while dinheiro < total:
+            print("Valor insuficiente.")
+            print(f"Total: R$ {total:.2f}")
+            dinheiro = float(input("Favor inserir um valor equivalente ou superior ao total: R$ "))
+        troco = dinheiro - total
+        print("Total pago.")
+        print(f"Troco: R$ {troco:.2f}")
+        print("...\n")
+    
+    # Caso o valor pago seja suficiente
+    else:
+        print(f"Troco: R$ {troco:.2f}")
+        print("...\n")
+
+    # Resetando as variáveis para reiniciar o processo
+    produto = 1
+    total = 0
